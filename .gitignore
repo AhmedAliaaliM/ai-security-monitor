@@ -1,0 +1,18 @@
+# Biometric data - never commit
+known_faces.json
+known_faces_test.json
+
+# Python cache/build files
+__pycache__/
+*.pyc
+
+# Model downloads (large, re-downloadable, don't belong in git)
+*.onnx
+*.zip
+
+# Config files that may contain personal camera URLs/credentials
+my_camera.json
+
+# OS junk
+.DS_Store
+Thumbs.db
