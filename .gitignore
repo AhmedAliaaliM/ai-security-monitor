@@ -13,6 +13,27 @@ __pycache__/
 # Config files that may contain personal camera URLs/credentials
 my_camera.json
 
+# Streamlit secrets (API keys etc, if ever added) - config.toml (theme) is fine to commit
+.streamlit/secrets.toml
+
+# Recorded footage, if clip-saving to disk is ever added
+clips/
+recordings/
+*.mp4
+*.avi
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE junk
+.vscode/
+.idea/
+
+# Logs
+*.log
+
 # OS junk
 .DS_Store
 Thumbs.db

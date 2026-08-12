@@ -22,6 +22,38 @@ def _in_window(now: dtime, start: dtime, end: dtime) -> bool:
     return now >= start or now <= end
 
 
+ALL_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+
+def is_within_auth_schedule(cfg: dict, now: datetime = None) -> bool:
+    """
+    Checks the SEPARATE 'auth_schedule' config (days + time window) that
+    controls whether the identity/authorization pipeline runs at all.
+
+    Motion detected WITHIN this schedule -> run the real face-recognition
+    model, get a genuine authorized/unauthorized result.
+    Motion detected OUTSIDE this schedule -> skip the model entirely,
+    immediately treat the person as unauthorized (e.g. nobody should be
+    there at 2am, so don't bother checking who it is).
+
+    Default (if not configured): always active, every day - matches prior
+    behavior so existing configs aren't silently changed.
+    """
+    now = now or datetime.now()
+    auth_cfg = cfg.get("auth_schedule", {})
+
+    allowed_days = auth_cfg.get("days", ALL_DAYS)
+    today = now.strftime("%a")  # 'Mon', 'Tue', etc.
+    if today not in allowed_days:
+        return False
+
+    start_s = auth_cfg.get("start", "00:00")
+    end_s = auth_cfg.get("end", "23:59")
+    start_t = _parse_hhmm(start_s)
+    end_t = _parse_hhmm(end_s)
+    return _in_window(now.time(), start_t, end_t)
+
+
 def get_current_mode(cfg: dict, now: datetime = None) -> str:
     """Returns 'ai_mode' or 'cctv_mode' based on the camera's schedule config."""
     now = now or datetime.now()

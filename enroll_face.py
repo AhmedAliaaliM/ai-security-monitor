@@ -1,9 +1,13 @@
 """
-Enrollment tool - add authorized faces to the known-faces database.
+Enrollment tool — add authorized faces to the known-faces database.
 
 Usage:
-    python enroll_face.py --name "John" --image path\to\photo.jpg
-    python enroll_face.py --name "John" --webcam
+    python enroll_face.py --name "John" --image path/to/photo.jpg
+    python enroll_face.py --name "John" --webcam    # captures one frame from webcam
+
+Run this once per authorized person before using main.py with identity
+pipeline enabled. Re-running with the same name overwrites their entry
+(useful if the first enrollment photo wasn't great).
 """
 
 import argparse
@@ -58,7 +62,7 @@ def main():
     if success:
         print(f"Enrolled '{args.name}' successfully. Database: {args.db}")
     else:
-        print("No face detected in the provided image - try a clearer, front-facing photo.")
+        print("No face detected in the provided image — try a clearer, front-facing photo.")
 
 
 if __name__ == "__main__":

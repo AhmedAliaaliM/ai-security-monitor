@@ -1,0 +1,32 @@
+# Custom theme for the Security Monitor dashboard.
+# Native widgets (buttons, sliders, tabs, inputs, checkboxes) are themed
+# here rather than fought with CSS - this is the config-driven approach
+# Streamlit itself recommends: it stays consistent across every widget
+# automatically and won't break on a Streamlit upgrade the way selector-
+# based CSS hacking can. app.py's own <style> block only handles the
+# bespoke elements (status bar, video frame, alert cards) that go beyond
+# what theming covers.
+
+[theme]
+base = "dark"
+primaryColor = "#3EA6FF"
+backgroundColor = "#0F1318"
+secondaryBackgroundColor = "#1B2127"
+textColor = "#E4E9EF"
+linkColor = "#3EA6FF"
+codeTextColor = "#7DD3FC"
+codeBackgroundColor = "#1B2127"
+borderColor = "#2A323A"
+baseRadius = "0.6rem"
+buttonRadius = "0.5rem"
+showWidgetBorder = true
+showSidebarBorder = true
+dataframeBorderColor = "#2A323A"
+dataframeHeaderBackgroundColor = "#1B2127"
+font = "sans serif"
+
+[theme.sidebar]
+backgroundColor = "#161B20"
+secondaryBackgroundColor = "#1F262D"
+primaryColor = "#3EA6FF"
+borderColor = "#2A323A"
