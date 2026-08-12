@@ -391,10 +391,5 @@ Potential future improvements include:
 * [`DASHBOARD_README.md`](DASHBOARD_README.md) — Dashboard usage, configuration, and deployment details
 * [`config/camera_config.py`](config/camera_config.py) — Configuration schema and defaults
 
-## License
-
-Add the project's license here if one has been selected.
-
----
 
 **AI Security Monitor** — intelligent computer vision for real-time security monitoring.
